@@ -1,16 +1,13 @@
 # Python-STOCK-PRICE-MONTE-CARLO-SIMULATOR
 
-#====================================================================================================================================
+
 1. Project Overview
-#====================================================================================================================================
    
 The Stock Price Monte Carlo Simulator is a Python-based financial analytics project that uses NumPy to simulate stock-price movements and portfolio outcomes under a set of assumed market conditions. The project was developed progressively, beginning with a basic stock-price simulation and expanding into portfolio analysis, risk measurement, Monte Carlo simulation, visualization, and percentile-based scenario analysis.
 The primary objective is to understand how numerical computing, statistical simulation, and financial risk concepts can be implemented using Python and NumPy without relying on specialized finance libraries.
 Important: The simulated results are mathematical scenarios based on user-defined assumptions. They are not forecasts, investment recommendations, or predictions of actual market performance.
 
-#==================================================================================================================================
 2. Project Objectives
-#==================================================================================================================================
 
 •	Simulate daily stock-price movements using randomly generated returns.
 •	Calculate portfolio value, profit/loss, and investment return.
@@ -21,9 +18,7 @@ Important: The simulated results are mathematical scenarios based on user-define
 •	Analyze simulated outcomes using percentiles and scenario analysis.
 •	Practice NumPy arrays, vectorization, statistics, random simulation, and Matplotlib visualization.
 
-#==================================================================================================================================
 3. Technologies Used
-#==================================================================================================================================
 
 •	Python
 •	NumPy — numerical calculations, random simulation, arrays, statistics, and vectorized operations.
@@ -31,9 +26,7 @@ Important: The simulated results are mathematical scenarios based on user-define
 •	Google Colab / Jupyter Notebook — development and execution environment.
 The core simulation does not require pandas, scikit-learn, yfinance, or a specialized financial-data API.
 
-#==================================================================================================================================
 4. Project Development 
-#==================================================================================================================================
 
 Step 1 — Stock Price Simulation
 The first version creates one possible stock-price path over 252 trading days. Daily returns are generated using a normal distribution and converted into stock prices using cumulative products.
@@ -107,9 +100,7 @@ Simulated probability of profit	61%
 Simulated probability of loss	39%
 These results describe the simulated distribution produced by the selected assumptions. They should not be interpreted as predictions of actual market outcomes.
 
-#==================================================================================================================================
 5. Visualization 📊📈
-#==================================================================================================================================
 
 Matplotlib is introduced for visual analysis. Two main visualizations were created.
 
@@ -124,9 +115,7 @@ The second chart is a histogram of the 1,000 final portfolio values. It includes
 
 <img width="713" height="461" alt="Screenshot 2026-09-23 202844" src="https://github.com/user-attachments/assets/944ffb4c-2353-4387-aacf-13a5629bb3e5" />
 
-#=================================================================================================================================== 
 6. Percentile & Scenario Analysis 💯
-#===================================================================================================================================
 
 The final stage analyzes the distribution of final portfolio values using percentiles. Percentiles help describe different parts of the simulated outcome distribution.
 
@@ -145,9 +134,7 @@ Scenario interpretation used in the project:
 •	95th percentile — upside scenario
 These scenarios describe the simulated distribution under the model assumptions and are not forecasts.
 
-#========================================================================================================================================
 7. Key NumPy Concepts Practiced 🔢
-#========================================================================================================================================
 
 •	Random number generation with np.random.normal()
 •	Cumulative products with np.cumprod()
@@ -164,9 +151,7 @@ These scenarios describe the simulated distribution under the model assumptions 
 •	Vectorized calculations
 •	The axis parameter, especially axis=1
 
-#===========================================================================================================================================
 8. Key Financial Concepts Practiced 💱
-#===========================================================================================================================================
 
 •	Daily returns
 •	Stock-price simulation
@@ -182,9 +167,7 @@ These scenarios describe the simulated distribution under the model assumptions 
 •	Percentile analysis
 •	Scenario analysis
 
-#===========================================================================================================================================
 9. Project Structure ⚙️
-#===========================================================================================================================================
 
 Stock-Price-Monte-Carlo-Simulator/
 │
@@ -195,9 +178,7 @@ Stock-Price-Monte-Carlo-Simulator/
     ├── monte_carlo_price_paths.png
     └── portfolio_value_distribution.png
 
-#=========================================================================================================================================
 10. How to Run 👩‍💻
-#=========================================================================================================================================
 
 Install the required packages:
 pip install numpy matplotlib
@@ -205,9 +186,7 @@ Then run the Python script:
 python stock_simulator.py
 The program prints the simulation statistics and generates the visualization charts.
 
-#========================================================================================================================================
 11. Main Assumptions 💵
-#========================================================================================================================================
 
 •	Initial stock price = $100
 •	Initial investment = $10,000
@@ -218,22 +197,16 @@ The program prints the simulation statistics and generates the visualization cha
 •	Random seed = 42
 •	Risk-free rate = 0% for the simplified Sharpe-ratio calculation
 
-#========================================================================================================================================
 12. Learning Outcome 🔳
-#========================================================================================================================================
 
 This project demonstrates how Python and NumPy can be used to build a financial simulation from the ground up. It combines Python programming, numerical computing, statistics, finance, Monte Carlo simulation, risk analysis, and data visualization.
 The project is particularly relevant for demonstrating practical skills in Finance, Business Analytics, Quantitative Analysis, and Python-based Data Analytics.
 
-#========================================================================================================================================
 13. About 🙋‍♀️
-#========================================================================================================================================
 Shrestha Sarkar
 PGDM — Finance Major | Business Analytics Minor
 Skills demonstrated: Python, NumPy, Matplotlib, Financial Analysis, Risk Analysis, Statistical Simulation, Monte Carlo Simulation, and Data Visualization.
 
-#========================================================================================================================================
 14. License 📄
-#========================================================================================================================================
 
 This project is licensed under the [MIT License](LICENSE).
