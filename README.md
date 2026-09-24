@@ -28,53 +28,67 @@ The core simulation does not require pandas, scikit-learn, yfinance, or a specia
 
 D. Project Development 
 
-Step 1 — Stock Price Simulation
+_Step 1 — Stock Price Simulation_
 The first version creates one possible stock-price path over 252 trading days. Daily returns are generated using a normal distribution and converted into stock prices using cumulative products.
-Main parameters:
-Initial stock price: $100
-Trading days: 252
-Expected daily return: 0.05%
-Daily volatility: 2%
-Random seed: 42
+
+_Main parameters:_
+
+<img width="488" height="210" alt="Screenshot 2026-09-23 195746" src="https://github.com/user-attachments/assets/2616af8f-3e7f-4576-9804-4aeb74efdf5f" />
+
 
 Important NumPy operations:
-np.random.normal()
-np.cumprod()
-np.insert()
-np.mean()
-np.std()
-np.max()
-np.min()
-The version calculates the final stock price, maximum and minimum price, total return, average daily return, and daily volatility.
+1. np.random.normal()
+2. np.cumprod()
+3. np.insert()
+4. np.mean()
+5. np.std()
+6. np.max()
+7. np.min()
+The calculates the final stock price, maximum and minimum price, total return, average daily return, and daily volatility.
 
-Step 2 — Portfolio Simulation
-Version 2 extends the stock-price simulation into an investment scenario. An initial investment of $10,000 is made when the simulated stock price is $100.
+_Step 2 — Portfolio Simulation_
+Step 2 extends the stock-price simulation into an investment scenario. An initial investment of $10,000 is made when the simulated stock price is $100.
+
 Number of shares:
 shares = initial_investment / initial_price
+
 This results in 100 shares. The model then calculates the final portfolio value, profit or loss, and portfolio return based on the simulated final stock price.
 
-Step 3 — Risk Analysis
-Version 3 introduces financial risk metrics to evaluate the simulated price path.
+<img width="526" height="276" alt="Screenshot 2026-09-23 195724" src="https://github.com/user-attachments/assets/b5f3c1b2-3a33-4e18-8910-cb160e1d73d3" />
 
-Maximum Drawdown
+
+_Step 3 — Risk Analysis_
+Step 3 introduces financial risk metrics to evaluate the simulated price path.
+
+a. Maximum Drawdown:
 Maximum drawdown measures the largest decline from a previous running peak.
+
 running_max = np.maximum.accumulate(prices)
+
 drawdown = (prices - running_max) / running_max
 
-Sharpe Ratio
+b. Sharpe Ratio:
 A simplified annualized Sharpe ratio is calculated using the simulated mean return and volatility, with a 0% risk-free-rate assumption.
+
 sharpe_ratio = (np.mean(random_returns) / np.std(random_returns)) * np.sqrt(252)
 
-95% Value at Risk
+c. 95% Value at Risk:
 A simplified historical-style VaR is estimated using the 5th percentile of simulated daily returns.
-var_95 = np.percentile(random_returns, 5)
+
+var_95 = np.percentile(random_returns, 5).
+
 Additional risk metrics include the best trading day and worst trading day.
 
-Step 4 — Monte Carlo Simulation
-Instead of generating one possible future, Version 4 generates 1,000 possible stock-price paths, with each path containing 252 trading days.
-The return matrix therefore has the shape:
-(1000, 252)
+<img width="462" height="232" alt="Screenshot 2026-09-23 195705" src="https://github.com/user-attachments/assets/b57f7b4e-029e-4e32-b0f5-e60c0f3af1a3" />
+
+
+_Step 4 — Monte Carlo Simulation_
+Instead of generating one possible future, Step 4 generates 1,000 possible stock-price paths, with each path containing 252 trading days.
+
+The return matrix therefore has the shape:(1000, 252)
+
 Rows represent simulations and columns represent trading days. NumPy vectorization is used to perform the calculations efficiently.
+
 random_returns = np.random.normal(
     daily_return,
     daily_volatility,
@@ -86,19 +100,14 @@ price_paths = initial_price * np.cumprod(
     axis=1
 )
 
+<img width="576" height="430" alt="Screenshot 2026-09-23 201430" src="https://github.com/user-attachments/assets/9c3b5544-e3d9-446f-9f5f-198a3b1564fb" />
+
+
 Final portfolio results from the completed simulation:
-Metric	Result
-Number of simulations	1,000
-Trading days	252
-Initial investment	$10,000
-Average final value	$11,326.91
-Median final value	$10,921.05
-Best final value	$25,967.81
-Worst final value	$3,887.48
-Profitable simulations	610
-Loss simulations	390
-Simulated probability of profit	61%
-Simulated probability of loss	39%
+
+<img width="450" height="292" alt="Screenshot 2026-09-24 111149" src="https://github.com/user-attachments/assets/a0ea4ef2-a7ba-4a9b-8f03-cbb0d66847e3" />
+
+
 These results describe the simulated distribution produced by the selected assumptions. They should not be interpreted as predictions of actual market outcomes.
 
 E. Visualization 📊📈
@@ -120,53 +129,33 @@ F. Percentile & Scenario Analysis 💯
 
 The final stage analyzes the distribution of final portfolio values using percentiles. Percentiles help describe different parts of the simulated outcome distribution.
 
-Percentile	Portfolio Value	Simulated Return
-5th	$6,395.82	-36.04%
-25th	$8,657.42	-13.43%
-50th	$10,921.05	+9.21%
-75th	$13,312.98	+33.13%
-95th	$18,080.52	+80.81%
+<img width="507" height="197" alt="Screenshot 2026-09-23 204233" src="https://github.com/user-attachments/assets/50a56f6b-1ead-4302-bdd3-01ea798cd2df" />
+<img width="458" height="198" alt="Screenshot 2026-09-23 204248" src="https://github.com/user-attachments/assets/34de6982-8443-44bb-8a29-5c643bcf8639" />
+<img width="421" height="205" alt="Screenshot 2026-09-23 204309" src="https://github.com/user-attachments/assets/cd59d317-9827-4134-9a05-18512480dff3" />
 
-Scenario interpretation used in the project:
-5th percentile — downside scenario
-25th percentile — lower scenario
-50th percentile — median scenario
-75th percentile — upper scenario
-95th percentile — upside scenario
+
 These scenarios describe the simulated distribution under the model assumptions and are not forecasts.
 
 G. Key NumPy Concepts Practiced 🔢
 
-Random number generation with np.random.normal()
-Cumulative products with np.cumprod()
-Array insertion with np.insert()
-Mean and median with np.mean() and np.median()
-Standard deviation with np.std()
-Maximum and minimum values with np.max() and np.min()
-Running maximum with np.maximum.accumulate()
-Percentile analysis with np.percentile()
-Counting conditions with np.sum()
-Annualization with np.sqrt()
-1D and 2D NumPy arrays
-Array indexing and slicing
-Vectorized calculations
-The axis parameter, especially axis=1
+<img width="465" height="337" alt="image" src="https://github.com/user-attachments/assets/46408626-c5c9-4bf9-8cc3-447cc65491d8" />
+
 
 H. Key Financial Concepts Practiced 💱
 
-Daily returns
-Stock-price simulation
-Portfolio value
-Profit and loss
-Portfolio return
-Volatility
-Maximum drawdown
-Sharpe ratio
-Value at Risk (VaR)
-Monte Carlo simulation
-Simulated probability of profit/loss
-Percentile analysis
-Scenario analysis
+1. Daily returns
+2. Stock-price simulation
+3. Portfolio value
+4. Profit and loss
+5. Portfolio return
+6. Volatility
+7. Maximum drawdown
+8. Sharpe ratio
+9. Value at Risk (VaR)
+10. Monte Carlo simulation
+11. Simulated probability of profit/loss
+12. Percentile analysis
+13. Scenario analysis
 
 I. Project Structure ⚙️
 
@@ -183,20 +172,17 @@ J. How to Run 👩‍💻
 
 Install the required packages:
 pip install numpy matplotlib
+
 Then run the Python script:
 python stock_simulator.py
+
 The program prints the simulation statistics and generates the visualization charts.
 
 K. Main Assumptions 💵
 
-Initial stock price = $100
-Initial investment = $10,000
-Trading days = 252
-Number of Monte Carlo simulations = 1,000
-Expected daily return = 0.05%
-Daily volatility = 2%
-Random seed = 42
-Risk-free rate = 0% for the simplified Sharpe-ratio calculation
+<img width="380" height="220" alt="image" src="https://github.com/user-attachments/assets/3323f404-2816-4833-b997-f3150af78f2c" />
+
+for the simplified Sharpe-ratio calculation
 
 L. Learning Outcome 🔳
 
