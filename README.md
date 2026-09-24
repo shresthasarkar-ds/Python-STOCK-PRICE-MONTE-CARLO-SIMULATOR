@@ -9,14 +9,14 @@ Important: The simulated results are mathematical scenarios based on user-define
 
 2. Project Objectives
 
-a. Simulate daily stock-price movements using randomly generated returns.
-b. Calculate portfolio value, profit/loss, and investment return.
-c. Measure basic investment risk using financial risk metrics.
-d. Generate 1,000 possible stock-price paths using Monte Carlo simulation.
-e. Estimate the simulated proportion of profitable and loss outcomes.
-f. Visualize simulated stock-price paths and the distribution of final portfolio values.
-g. Analyze simulated outcomes using percentiles and scenario analysis.
-h. Practice NumPy arrays, vectorization, statistics, random simulation, and Matplotlib visualization.
+1. Simulate daily stock-price movements using randomly generated returns.
+2. Calculate portfolio value, profit/loss, and investment return.
+3. Measure basic investment risk using financial risk metrics.
+4. Generate 1,000 possible stock-price paths using Monte Carlo simulation.
+5. Estimate the simulated proportion of profitable and loss outcomes.
+6. Visualize simulated stock-price paths and the distribution of final portfolio values.
+7. Analyze simulated outcomes using percentiles and scenario analysis.
+8. Practice NumPy arrays, vectorization, statistics, random simulation, and Matplotlib visualization.
 
 3. Technologies Used
 
