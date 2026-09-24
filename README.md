@@ -28,7 +28,8 @@ The core simulation does not require pandas, scikit-learn, yfinance, or a specia
 
 D. Project Development 
 
-_Step 1 — Stock Price Simulation_
+_Step 1 — Stock Price Simulation_:
+
 The first version creates one possible stock-price path over 252 trading days. Daily returns are generated using a normal distribution and converted into stock prices using cumulative products.
 
 _Main parameters:_
@@ -44,9 +45,11 @@ Important NumPy operations:
 5. np.std()
 6. np.max()
 7. np.min()
+
 The calculates the final stock price, maximum and minimum price, total return, average daily return, and daily volatility.
 
-_Step 2 — Portfolio Simulation_
+_Step 2 — Portfolio Simulation_:
+
 Step 2 extends the stock-price simulation into an investment scenario. An initial investment of $10,000 is made when the simulated stock price is $100.
 
 Number of shares:
@@ -57,22 +60,23 @@ This results in 100 shares. The model then calculates the final portfolio value,
 <img width="526" height="276" alt="Screenshot 2026-09-23 195724" src="https://github.com/user-attachments/assets/b5f3c1b2-3a33-4e18-8910-cb160e1d73d3" />
 
 
-_Step 3 — Risk Analysis_
+_Step 3 — Risk Analysis_:
+
 Step 3 introduces financial risk metrics to evaluate the simulated price path.
 
-a. Maximum Drawdown:
+**a. Maximum Drawdown:**
 Maximum drawdown measures the largest decline from a previous running peak.
 
 running_max = np.maximum.accumulate(prices)
 
 drawdown = (prices - running_max) / running_max
 
-b. Sharpe Ratio:
+**b. Sharpe Ratio:**
 A simplified annualized Sharpe ratio is calculated using the simulated mean return and volatility, with a 0% risk-free-rate assumption.
 
 sharpe_ratio = (np.mean(random_returns) / np.std(random_returns)) * np.sqrt(252)
 
-c. 95% Value at Risk:
+**c. 95% Value at Risk:**
 A simplified historical-style VaR is estimated using the 5th percentile of simulated daily returns.
 
 var_95 = np.percentile(random_returns, 5).
@@ -82,7 +86,8 @@ Additional risk metrics include the best trading day and worst trading day.
 <img width="462" height="232" alt="Screenshot 2026-09-23 195705" src="https://github.com/user-attachments/assets/b57f7b4e-029e-4e32-b0f5-e60c0f3af1a3" />
 
 
-_Step 4 — Monte Carlo Simulation_
+_Step 4 — Monte Carlo Simulation_:
+
 Instead of generating one possible future, Step 4 generates 1,000 possible stock-price paths, with each path containing 252 trading days.
 
 The return matrix therefore has the shape:(1000, 252)
@@ -114,13 +119,15 @@ E. Visualization 📊📈
 
 Matplotlib is introduced for visual analysis. Two main visualizations were created.
 
-E.1 Monte Carlo Stock Price Paths
+**E.1 Monte Carlo Stock Price Paths**:
+
 The first chart displays 100 of the 1,000 simulated stock-price paths. All paths begin near the initial price and gradually spread as random daily returns accumulate.
 
 <img width="712" height="393" alt="Screenshot 2026-09-23 202218" src="https://github.com/user-attachments/assets/2a86ff88-be42-4161-8880-1881b288c2bc" />
 
  
-E.2 Distribution of Final Portfolio Values
+**E.2 Distribution of Final Portfolio Values**:
+
 The second chart is a histogram of the 1,000 final portfolio values. It includes reference lines for the initial investment, mean, and median, making it easier to compare the simulated outcomes with the starting $10,000 investment.
 
 <img width="713" height="461" alt="Screenshot 2026-09-23 202844" src="https://github.com/user-attachments/assets/944ffb4c-2353-4387-aacf-13a5629bb3e5" />
