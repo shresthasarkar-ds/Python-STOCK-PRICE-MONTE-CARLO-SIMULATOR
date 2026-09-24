@@ -166,14 +166,8 @@ H. Key Financial Concepts Practiced 💱
 
 I. Project Structure ⚙️
 
-Stock-Price-Monte-Carlo-Simulator/
-│
-├── stock_simulator.py
-├── README.md
-├── requirements.txt
-└── screenshots/
-    ├── monte_carlo_price_paths.png
-    └── portfolio_value_distribution.png
+<img width="367" height="210" alt="image" src="https://github.com/user-attachments/assets/c2747423-c324-49bc-8e80-cfb8231b25ed" />
+
 
 J. How to Run 👩‍💻
 
