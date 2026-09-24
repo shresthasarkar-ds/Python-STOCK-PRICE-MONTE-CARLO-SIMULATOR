@@ -1,4 +1,4 @@
-# Python-STOCK-PRICE-MONTE-CARLO-SIMULATOR
+# Python Stock Price Monte Carlo Simulator
 
 
 ## A. Project Overview
